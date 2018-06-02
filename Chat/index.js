@@ -6,17 +6,17 @@ const UsersService = require('./UsersService');
 const app = express();
 const server = http.createServer(app);
 const io = socketIo(server);
-const userService = new UsersService;
+const userService = new UsersService();
 
 app.use(express.static(__dirname + '/public'));
 
 app.get('/', function(req, res) {
-    res.sendFile(__dirname + 'index.html');
+    res.sendFile(__dirname + '/index.html');
 });
 
 io.on('connection', function(socket) {
     socket.on('join', function(name) {
-        userService.addUser ({
+        userService.addUser({
             id: socket.id,
             name
         });
@@ -31,8 +31,8 @@ io.on('connection', function(socket) {
         });
     });
     socket.on('message', function(message) {
-        const{name} = userService.getUserById(socket.id);
-        socekt.broadcast.emit('message', {
+        const {name} = userService.getUserById(socket.id);
+        socket.broadcast.emit('message', {
             text: message.text,
             from: name
         });

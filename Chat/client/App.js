@@ -66,7 +66,7 @@ class App extends Component {
         );
     }
     renderUserForm() {
-        return (<UserForm onUserSubmit={this.handleUserSubmit(name)} />)
+        return (<UserForm onUserSubmit={name => this.handleUserSubmit(name)} />)
     }
 };
 
