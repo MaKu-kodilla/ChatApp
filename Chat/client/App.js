@@ -30,12 +30,12 @@ class App extends Component {
         this.setState({messages});
         socket.emit('message', message);
     }
-    handlerUserSubmit(name) {
+    handleUserSubmit(name) {
         this.setState({name});
         socket.emit('join', name);
     }
     render() {
-        return this.state.name !== '' ? this.renderLayout : this.rednerUserForm();
+        return this.state.name !== '' ? this.renderLayout : this.renderUserForm();
     }
     renderLayout() {
         return (
