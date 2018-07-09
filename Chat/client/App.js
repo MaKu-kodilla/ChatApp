@@ -35,7 +35,7 @@ class App extends Component {
         socket.emit('join', name);
     }
     render() {
-        return this.state.name !== '' ? this.renderLayout : this.renderUserForm();
+        return this.state.name !== '' ? this.renderLayout() : this.renderUserForm();
     }
     renderLayout() {
         return (
